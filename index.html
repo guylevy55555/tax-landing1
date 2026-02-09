@@ -201,13 +201,13 @@ footer {text-align:center;padding:30px 10px;color:#555;font-size:0.9em;backgroun
 </div>
 
 <script type="text/javascript">
-  emailjs.init("YOUR_USER_ID"); // הוסף את ה-User ID שלך מ-EmailJS
+  emailjs.init("2SrvifCBL6qrfwiA4"); // הוסף את ה-User ID שלך מ-EmailJS
 
   document.getElementById('taxForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
     // שלח את הנתונים ל-EmailJS
-    emailjs.sendForm('qgukpno', 'template_d7lfkgq', this)
+    emailjs.sendForm('service_qgukpno', 'template_d7lfkgq', this)
       .then(function(response) {
          console.log('SUCCESS', response);
          alert('הבקשה שלך נקלטה בהצלחה!');
@@ -220,4 +220,5 @@ footer {text-align:center;padding:30px 10px;color:#555;font-size:0.9em;backgroun
 
 </body>
 </html>
+
 
