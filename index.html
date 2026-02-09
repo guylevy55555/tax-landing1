@@ -184,4 +184,18 @@
     // שלח את הנתונים ל-EmailJS
     emailjs.sendForm('service_qgukpno', 'template_d7lfkgq', this)
       .then(function(response) {
-       
+        console.log('SUCCESS', response);
+        alert('הבקשה שלך נקלטה בהצלחה!');
+        // הסתר את הפופ-אפ לאחר שליחה מוצלחת
+        document.getElementById('popup').style.display = 'none';
+      }, function(error) {
+        console.log('FAILED', error);
+        alert('שגיאה בשליחת המייל, נסה שנית');
+        // הסתר את הפופ-אפ במקרה של שגיאה
+        document.getElementById('popup').style.display = 'none';
+      });
+  });
+</script>
+
+</body>
+</html>
