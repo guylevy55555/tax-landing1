@@ -6,7 +6,6 @@
   <title>בדיקת זכאות להחזר מס</title>
   <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    /* כל הסטיילים נשארים אותו הדבר */
     body {
         margin:0;
         font-family:'Rubik',sans-serif;
@@ -86,7 +85,39 @@
     }
     @keyframes spin {100% {transform:rotate(360deg);}}
 
-    /* כל שאר הסטיילים נשארים כמו שהם */
+
+    /* FORM */
+    form {
+        position:relative;
+        display:flex;
+        flex-direction:column;
+        background: linear-gradient(135deg,#fff3e0,#ffe0b2);
+        padding:30px;
+        border-radius:20px;
+        box-shadow:0 10px 25px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    form:hover {transform: translateY(-3px); box-shadow:0 15px 30px rgba(0,0,0,0.12);}
+    .form-group {margin-bottom:15px;}
+    label {margin-bottom:5px;font-weight:500;display:block;color:#333;}
+    input {padding:12px;font-size:1em;border-radius:10px;border:1px solid #ccc;width:100%;}
+    input:focus {border-color:#4CAF50;outline:none;box-shadow:0 0 8px rgba(76,175,80,0.4);}
+    button {
+        background: linear-gradient(270deg,#FF9800,#F44336,#FF5722,#FF7043);
+        background-size:400% 400%;
+        color:white;
+        padding:15px;
+        font-size:1.2em;
+        border:none;
+        border-radius:12px;
+        cursor:pointer;
+        margin-top:10px;
+        animation: buttonGradient 5s ease infinite;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    button:hover {transform: scale(1.08); box-shadow:0 10px 25px rgba(0,0,0,0.2);}
+    @keyframes buttonGradient {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+
   </style>
 </head>
 <body>
@@ -136,6 +167,7 @@
   &copy; 2026 החזרי מס פרימיום | כל הזכויות שמורות
 </footer>
 
+<!-- Popup for Loading -->
 <div class="popup" id="popup">
   <div id="popup-text">בודק את זכאותך...</div>
   <div class="loader"></div>
