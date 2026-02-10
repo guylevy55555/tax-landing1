@@ -175,7 +175,9 @@
 <script src="https://cdn.emailjs.com/sdk/3.2/email.min.js"></script>
   
 <script type="text/javascript">
-  emailjs.init("t2eGSdp94pjW_SynR"); // מפתח ציבורי שלך
+ emailjs.init({
+  publicKey: "t2eGSdp94pjW_SynR"
+});
 
   document.getElementById('taxForm').addEventListener('submit', function(e) {
     e.preventDefault();
@@ -201,6 +203,7 @@
 
 </body>
 </html>
+
 
 
 
